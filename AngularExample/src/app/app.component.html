@@ -1,41 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Angular Example</title>
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
+<div class="container-fluid">
   <body>
-    <div class="toolbar" role="banner">
-      <span>Welcome</span>
-    </div>
+    <!-- Non mobile view-->
+    <!-- <div class="d-none d-sm-block"> -->
+      <div class="toolbar" role="banner">
+        <span>Welcome</span>
+      </div>
+      <div class="content" role="main">
+        <h1>{{ title }} app is running!</h1>  
+        <div>
+          <h2>Users</h2>
+        </div> 
+        <table class="d-none d-sm-block">
+          <thead>
+            <tr class="bordered">
+              <th>Id</th>
+              <th>email</th>
+              <th>First Name</th>
+              <th>Address</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.address.street }} {{ user.address.suite }} {{ user.address.city }} {{ user.address.zipcode }}</td>
+              <td>{{ user.phone }}</td>
+            </tr>
+          </tbody>
+        </table>   
+      </div>
+    <!-- </div> -->
 
-    <div class="content" role="main">
-      <h1>{{ title }} app is running!</h1>  
-       <div>
-         <h2>Users</h2>
-       </div> 
-       <table>
-         <thead>
-           <tr class="bordered">
-            <th>Id</th>
-            <th>email</th>
-            <th>First Name</th>
-            <th>Address</th>
-            <th>Phone</th>
-          </tr>
-         </thead>
-         <tbody>
-           <tr *ngFor="let user of users">
-             <td>{{ user.id }}</td>
-             <td>{{ user.email }}</td>
-             <td>{{ user.name }}</td>
-             <td>{{ user.address.street }} {{ user.address.suite }} {{ user.address.city }} {{ user.address.zipcode }}</td>
-             <td>{{ user.phone }}</td>
-           </tr>
-         </tbody>
-       </table> 
-      
-    </div>
+    <!--mobile view-->
+    <!-- <div class="d-sm-none">
+
+      <div class="toolbar" role="banner">
+        <span>Welcome</span>
+      </div>
+      <div class="content" role="main">
+        <h1>{{ title }} app is running!</h1>  
+        <div>
+          <h2>Users</h2>
+        </div> 
+        <table>
+          <thead>
+            <tr class="bordered">
+              <th>Id</th>
+              <th>email</th>
+              <th>First Name</th>
+              <th>Address</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.address.street }} {{ user.address.suite }} {{ user.address.city }} {{ user.address.zipcode }}</td>
+              <td>{{ user.phone }}</td>
+            </tr>
+          </tbody>
+        </table>   
+      </div>
+    </div> -->
   </body>
-</html>
+</div>
+

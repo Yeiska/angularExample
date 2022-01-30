@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this._users.getUsers().subscribe((response: User[]) => {
       this.users = response;
-    })
+    },
+    (error)=> console.error(error))
   }
 }
