@@ -1,16 +1,16 @@
 <div class="container-fluid">
-  <body>
+  <body  class="container d-flex flex-column body">
     <!-- Non mobile view-->
     <!-- <div class="d-none d-sm-block"> -->
-      <div class="toolbar" role="banner">
-        <span>Welcome</span>
+      <div class="toolbar" style="width: 100%; padding-left: 45%;" role="toolbar">
+        <h1>Welcome</h1>
       </div>
       <div class="content" role="main">
-        <h1>{{ title }} app is running!</h1>  
+        <h1>{{ title }} app</h1>  
         <div>
           <h2>Users</h2>
         </div> 
-        <table class="d-none d-sm-block">
+        <table class="d-none d-sm-block" class="table caption-top">
           <thead>
             <tr class="bordered">
               <th>Id</th>
@@ -29,7 +29,25 @@
               <td>{{ user.phone }}</td>
             </tr>
           </tbody>
-        </table>   
+        </table>
+        <form class="row g-3" style="padding-top: 10px;" #form="ngForm" (ngSubmit) = "submit()">
+          <h2>Would you like to add a new user?</h2>
+          <div>
+            <section>
+              <div class="col-12" style="padding-bottom: 20px; padding-top: 10px;">
+                <label for="userName">User Name</label>&nbsp;
+                <input #userName="ngModel" name="userName" [(ngModel)]="user.title" class="form-control" required type="text">
+              </div>
+            </section>
+            <section>
+              <div class="col-12">
+                <label for="body">Last Name </label>&nbsp;
+                <input #body="ngModel" name="body" [(ngModel)]="user.body" class="form-control" required type="text">
+              </div>
+            </section>
+          </div>
+          <button type="submit" class="btn btn primary">Submit</button>
+        </form>  
       </div>
     <!-- </div> -->
 

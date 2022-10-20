@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from './models/users.model';
+import { User } from './models/user.model';
+import { Users } from './models/users.model';
 import{ UserService } from './services/user.service'
 
 @Component({
@@ -11,14 +12,32 @@ import{ UserService } from './services/user.service'
 export class AppComponent implements OnInit {
 
   title = 'Angular Example';
-  users!: User[];
+  users!: Users[];
+  user: User = {
+    title: "",
+    body: "",
+  };
 
-  constructor( private _users : UserService) {}
+  constructor( 
+    private _users : UserService,
+    private _user: UserService) {}
 
-  ngOnInit(): void {
-    this._users.getUsers().subscribe((response: User[]) => {
+  ngOnInit() {
+    this.getUsers();
+  }
+  getUsers(){
+    this._users.getUsers().subscribe((response: Users[]) => {
       this.users = response;
     },
     (error)=> console.error(error))
+  }
+
+  submit() {
+    console.log(this.user);
+    this._user.postUser(this.user).subscribe((response: User) =>{
+      this.user = response;
+      console.log(this.user);
+      this.getUsers();
+    })
   }
 }
